@@ -33,7 +33,7 @@ public class AlunoService {
 			dataRetorno.setDia(dataConvertida.getDay());
 			return dataRetorno;
 		} catch (Exception e) {
-			System.out.println("Erro Conversão da data: " + e.getMessage());
+			System.out.println("Erro Conversï¿½o da data: " + e.getMessage());
 			return null;
 		}
 	}
@@ -59,14 +59,24 @@ public class AlunoService {
 
 	public void cadastrarAluno(AlunoDTO alunoDTO) throws ServiceException,
 			DaoException {
-		if ((alunoDTO.getMatricula() < 1) || (alunoDTO.getMatricula() > 99)) {
-			throw new ServiceException(
-					ServiceExceptionEnum.CURSO_CODIGO_INVALIDO);
+		//inicio
+		if ((alunoDTO.getMatricula() == 0 ) || (alunoDTO.getMatricula() < 1 )) {
+				throw new ServiceException(
+				ServiceExceptionEnum.CAMPO_INVALIDO);
 		}
-		if ((alunoDTO.getNome().length() < 1)
-				|| (alunoDTO.getNome().length() > 20)) {
-			throw new ServiceException(ServiceExceptionEnum.CURSO_NOME_INVALIDO);
+		if ((alunoDTO.getNome().length() < 1) || (alunoDTO.getNome().length() > 20)) {
+				throw new ServiceException(
+				ServiceExceptionEnum.LIMITE_INVALIDO);
 		}
+		if ((alunoDTO.getNome() == "" ) || (alunoDTO.getNome() == null )) {
+				throw new ServiceException(
+						ServiceExceptionEnum.CAMPO_INVALIDO);
+		}
+		if ((alunoDTO.getIdade() == 0 ) || (alunoDTO.getNome() == null )) {
+				throw new ServiceException(
+						ServiceExceptionEnum.CAMPO_INVALIDO);
+		}
+		//fim
 				
 		Aluno aluno = new Aluno(alunoDTO.getMatricula(), alunoDTO.getNome(),
 				getData(alunoDTO.getDtNascimento().toString()), alunoDTO.isMatriculaAtiva(),
@@ -84,14 +94,24 @@ public class AlunoService {
 
 	public void alterarAluno(AlunoDTO alunoDTO) throws ServiceException,
 			DaoException {
-		if ((alunoDTO.getMatricula() < 1) || (alunoDTO.getMatricula() > 99)) {
-			throw new ServiceException(
-					ServiceExceptionEnum.CURSO_CODIGO_INVALIDO);
-		}
-		if ((alunoDTO.getNome().length() < 1)
-				|| (alunoDTO.getNome().length() > 20)) {
-			throw new ServiceException(ServiceExceptionEnum.CURSO_NOME_INVALIDO);
-		}
+				//inicio
+				if ((alunoDTO.getMatricula() == 0 ) || (alunoDTO.getMatricula() < 1 )) {
+						throw new ServiceException(
+						ServiceExceptionEnum.CAMPO_INVALIDO);
+				}
+				if ((alunoDTO.getNome().length() < 1) || (alunoDTO.getNome().length() > 20)) {
+						throw new ServiceException(
+						ServiceExceptionEnum.LIMITE_INVALIDO);
+				}
+				if ((alunoDTO.getNome() == "" ) || (alunoDTO.getNome() == null )) {
+						throw new ServiceException(
+								ServiceExceptionEnum.CAMPO_INVALIDO);
+				}
+				if ((alunoDTO.getIdade() == 0 ) || (alunoDTO.getNome() == null )) {
+						throw new ServiceException(
+								ServiceExceptionEnum.CAMPO_INVALIDO);
+				}
+				//fim
 
 		Aluno aluno = new Aluno(alunoDTO.getMatricula(), alunoDTO.getNome(),
 				getData(alunoDTO.getDtNascimento()), alunoDTO.isMatriculaAtiva(),

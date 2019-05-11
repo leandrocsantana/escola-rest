@@ -58,12 +58,20 @@ public class AlunoResource {
 			alunoService.cadastrarAluno(alunoDTO);
 			return Response.created(new URI("" + alunoDTO.getMatricula())).build();
 		} catch (ServiceException e) {
-			if (e.getTipo() == ServiceExceptionEnum.CURSO_CODIGO_INVALIDO)
-				return Response.status(400).header("Motivo", "C�digo inv�lido")
+			//inicio
+			if (e.getTipo() == ServiceExceptionEnum.CAMPO_INVALIDO)
+				return Response.status(402).header("Motivo", ServiceExceptionEnum.CAMPO_INVALIDO)
 						.build();
-			if (e.getTipo() == ServiceExceptionEnum.CURSO_NOME_INVALIDO)
-				return Response.status(400).header("Motivo", "Nome inv�lido")
+			if (e.getTipo() == ServiceExceptionEnum.ALUNO_MATRICULA_INVALIDA)
+				return Response.status(400).header("Motivo", ServiceExceptionEnum.ALUNO_MATRICULA_INVALIDA)
 						.build();
+			if (e.getTipo() == ServiceExceptionEnum.LIMITE_INVALIDO)
+				return Response.status(402).header("Motivo", ServiceExceptionEnum.LIMITE_INVALIDO)
+						.build();
+			if (e.getTipo() == ServiceExceptionEnum.CAMPO_INVALIDO)
+				return Response.status(402).header("Motivo", ServiceExceptionEnum.CAMPO_INVALIDO)
+						.build();
+			//fim
 			else
 				return Response.status(400).header("Motivo", e.getMessage())
 						.build();
@@ -81,12 +89,20 @@ public class AlunoResource {
 			alunoService.alterarAluno(alunoDTO);
 			return Response.created(new URI("" + alunoDTO.getMatricula())).build();
 		} catch (ServiceException e) {
-			if (e.getTipo() == ServiceExceptionEnum.CURSO_CODIGO_INVALIDO)
-				return Response.status(400).header("Motivo", "C�digo inv�lido")
+			//inicio
+			if (e.getTipo() == ServiceExceptionEnum.CAMPO_INVALIDO)
+				return Response.status(402).header("Motivo", ServiceExceptionEnum.CAMPO_INVALIDO)
 						.build();
-			if (e.getTipo() == ServiceExceptionEnum.CURSO_NOME_INVALIDO)
-				return Response.status(400).header("Motivo", "Nome inv�lido")
+			if (e.getTipo() == ServiceExceptionEnum.ALUNO_MATRICULA_INVALIDA)
+				return Response.status(400).header("Motivo", ServiceExceptionEnum.ALUNO_MATRICULA_INVALIDA)
 						.build();
+			if (e.getTipo() == ServiceExceptionEnum.LIMITE_INVALIDO)
+				return Response.status(402).header("Motivo", ServiceExceptionEnum.LIMITE_INVALIDO)
+						.build();
+			if (e.getTipo() == ServiceExceptionEnum.CAMPO_INVALIDO)
+				return Response.status(402).header("Motivo", ServiceExceptionEnum.CAMPO_INVALIDO)
+						.build();
+			//fim
 			else
 				return Response.status(400).header("Motivo", e.getMessage())
 						.build();

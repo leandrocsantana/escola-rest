@@ -56,12 +56,17 @@ public class DisciplinaResource {
 			return Response.created(new URI("" + disciplinaDTO.getCodigo()))
 					.build();
 		} catch (ServiceException e) {
+			//inicio
 			if (e.getTipo() == ServiceExceptionEnum.CURSO_CODIGO_INVALIDO)
 				return Response.status(400).header("Motivo", "C�digo inv�lido")
 						.build();
 			if (e.getTipo() == ServiceExceptionEnum.CURSO_NOME_INVALIDO)
 				return Response.status(400).header("Motivo", "Nome inv�lido")
 						.build();
+			if (e.getTipo() == ServiceExceptionEnum.CAMPO_INVALIDO)
+				return Response.status(400).header("Motivo",ServiceExceptionEnum.CAMPO_INVALIDO)
+						.build();
+			//fim
 			else
 				return Response.status(400).header("Motivo", e.getMessage())
 						.build();
@@ -80,12 +85,17 @@ public class DisciplinaResource {
 			return Response.created(new URI("" + disciplinaDTO.getCodigo()))
 					.build();
 		} catch (ServiceException e) {
+			//inicio
 			if (e.getTipo() == ServiceExceptionEnum.CURSO_CODIGO_INVALIDO)
 				return Response.status(400).header("Motivo", "C�digo inv�lido")
 						.build();
 			if (e.getTipo() == ServiceExceptionEnum.CURSO_NOME_INVALIDO)
 				return Response.status(400).header("Motivo", "Nome inv�lido")
 						.build();
+			if (e.getTipo() == ServiceExceptionEnum.CAMPO_INVALIDO)
+				return Response.status(400).header("Motivo",ServiceExceptionEnum.CAMPO_INVALIDO)
+						.build();
+			//fim
 			else
 				return Response.status(400).header("Motivo", e.getMessage())
 						.build();

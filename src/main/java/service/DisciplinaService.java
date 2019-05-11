@@ -33,7 +33,8 @@ public class DisciplinaService {
 
 	public void cadastrarDisciplina(DisciplinaDTO disciplinaDTO)
 			throws ServiceException, DaoException {
-		if ((disciplinaDTO.getCodigo() < 1) || (disciplinaDTO.getCodigo() > 99)) {
+		//inicio
+		if ((disciplinaDTO.getCodigo() < 1)) {
 			throw new ServiceException(
 					ServiceExceptionEnum.CURSO_CODIGO_INVALIDO);
 		}
@@ -41,6 +42,10 @@ public class DisciplinaService {
 				|| (disciplinaDTO.getNome().length() > 20)) {
 			throw new ServiceException(ServiceExceptionEnum.CURSO_NOME_INVALIDO);
 		}
+		if (disciplinaDTO.getCurso() < 1) {
+			throw new ServiceException(ServiceExceptionEnum.CAMPO_INVALIDO);
+		}
+		//fim
 
 		Disciplina disciplina = new Disciplina(disciplinaDTO.getCodigo(),
 				disciplinaDTO.getNome(), dao.getCurso(disciplinaDTO.getCurso()));
@@ -54,14 +59,19 @@ public class DisciplinaService {
 
 	public void alterarDisciplina(DisciplinaDTO disciplinaDTO)
 			throws ServiceException, DaoException {
-		if ((disciplinaDTO.getCodigo() < 1) || (disciplinaDTO.getCodigo() > 99)) {
-			throw new ServiceException(
-					ServiceExceptionEnum.CURSO_CODIGO_INVALIDO);
-		}
-		if ((disciplinaDTO.getNome().length() < 1)
-				|| (disciplinaDTO.getNome().length() > 20)) {
-			throw new ServiceException(ServiceExceptionEnum.CURSO_NOME_INVALIDO);
-		}
+				//inicio
+				if ((disciplinaDTO.getCodigo() < 1)) {
+					throw new ServiceException(
+							ServiceExceptionEnum.CURSO_CODIGO_INVALIDO);
+				}
+				if ((disciplinaDTO.getNome().length() < 1)
+						|| (disciplinaDTO.getNome().length() > 20)) {
+					throw new ServiceException(ServiceExceptionEnum.CURSO_NOME_INVALIDO);
+				}
+				if (disciplinaDTO.getCurso() < 1) {
+					throw new ServiceException(ServiceExceptionEnum.CAMPO_INVALIDO);
+				}
+				//fim
 
 		Disciplina disciplina = new Disciplina(disciplinaDTO.getCodigo(),
 				disciplinaDTO.getNome(), dao.getCurso(disciplinaDTO.getCurso()));

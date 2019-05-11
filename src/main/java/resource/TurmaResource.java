@@ -54,12 +54,23 @@ public class TurmaResource {
 					new URI("" + turmaDTO.getCodigo() + "/" + turmaDTO.getAno() + "/"
 							+ turmaDTO.getSemestre())).build();
 		} catch (ServiceException e) {
+			//inicio
 			if (e.getTipo() == ServiceExceptionEnum.CURSO_CODIGO_INVALIDO)
 				return Response.status(400).header("Motivo", "C�digo inv�lido")
 						.build();
 			if (e.getTipo() == ServiceExceptionEnum.CURSO_NOME_INVALIDO)
 				return Response.status(400).header("Motivo", "Nome inv�lido")
 						.build();
+			if (e.getTipo() == ServiceExceptionEnum.DATA_INVALIDA)
+				return Response.status(400).header("Motivo",ServiceExceptionEnum.CURSO_NOME_INVALIDO)
+						.build();
+			if (e.getTipo() == ServiceExceptionEnum.DATA_INVALIDA)
+				return Response.status(400).header("Motivo",ServiceExceptionEnum.CURSO_NOME_INVALIDO)
+						.build();
+			if (e.getTipo() == ServiceExceptionEnum.CAMPO_INVALIDO)
+				return Response.status(400).header("Motivo",ServiceExceptionEnum.CAMPO_INVALIDO)
+						.build();
+			//fim
 			else
 				return Response.status(400).header("Motivo", e.getMessage())
 						.build();
@@ -79,12 +90,23 @@ public class TurmaResource {
 					new URI("" + turmaDTO.getCodigo() + "/" + turmaDTO.getAno() + "/"
 							+ turmaDTO.getSemestre())).build();
 		} catch (ServiceException e) {
+			//inicio
 			if (e.getTipo() == ServiceExceptionEnum.CURSO_CODIGO_INVALIDO)
 				return Response.status(400).header("Motivo", "C�digo inv�lido")
 						.build();
 			if (e.getTipo() == ServiceExceptionEnum.CURSO_NOME_INVALIDO)
 				return Response.status(400).header("Motivo", "Nome inv�lido")
 						.build();
+			if (e.getTipo() == ServiceExceptionEnum.DATA_INVALIDA)
+				return Response.status(400).header("Motivo",ServiceExceptionEnum.CURSO_NOME_INVALIDO)
+						.build();
+			if (e.getTipo() == ServiceExceptionEnum.DATA_INVALIDA)
+				return Response.status(400).header("Motivo",ServiceExceptionEnum.CURSO_NOME_INVALIDO)
+						.build();
+			if (e.getTipo() == ServiceExceptionEnum.CAMPO_INVALIDO)
+				return Response.status(400).header("Motivo",ServiceExceptionEnum.CAMPO_INVALIDO)
+						.build();
+			//fim
 			else
 				return Response.status(400).header("Motivo", e.getMessage())
 						.build();

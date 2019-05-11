@@ -46,6 +46,21 @@ public class InscricaoService {
 		if ((inscricaoDTO.getAno() < 1900) || (inscricaoDTO.getAno() > 2020)) {
 			throw new ServiceException(ServiceExceptionEnum.CURSO_NOME_INVALIDO);
 		}
+		if ((inscricaoDTO.getAvaliacao1() < 1) || (inscricaoDTO.getAvaliacao1() > 10)) {
+			throw new ServiceException(ServiceExceptionEnum.NOTA_INVALIDA);
+		}
+		if ((inscricaoDTO.getAvaliacao2() < 1) || (inscricaoDTO.getAvaliacao2() > 10)) {
+			throw new ServiceException(ServiceExceptionEnum.NOTA_INVALIDA);
+		}
+		if ((inscricaoDTO.getMedia() < 1) || (inscricaoDTO.getMedia() > 10)) {
+			throw new ServiceException(ServiceExceptionEnum.NOTA_INVALIDA);
+		}
+		if ((inscricaoDTO.getSituacao().length() < 1) || (inscricaoDTO.getSituacao().length() > 20)) {
+			throw new ServiceException(ServiceExceptionEnum.LIMITE_INVALIDO);
+		}
+		if ((inscricaoDTO.getAno() < 1900) || (inscricaoDTO.getAno() > 2020)) {
+			throw new ServiceException(ServiceExceptionEnum.DATA_INVALIDA);
+		}
 
 		Inscricao inscricao = new Inscricao(inscricaoDTO.getAvaliacao1(),
 				inscricaoDTO.getAvaliacao2(), inscricaoDTO.getNumFaltas(),
@@ -68,6 +83,21 @@ public class InscricaoService {
 		}
 		if ((inscricaoDTO.getAno() < 1900) || (inscricaoDTO.getAno() > 2020)) {
 			throw new ServiceException(ServiceExceptionEnum.CURSO_NOME_INVALIDO);
+		}
+		if ((inscricaoDTO.getAvaliacao1() < 1) || (inscricaoDTO.getAvaliacao1() > 10)) {
+			throw new ServiceException(ServiceExceptionEnum.NOTA_INVALIDA);
+		}
+		if ((inscricaoDTO.getAvaliacao2() < 1) || (inscricaoDTO.getAvaliacao2() > 10)) {
+			throw new ServiceException(ServiceExceptionEnum.NOTA_INVALIDA);
+		}
+		if ((inscricaoDTO.getMedia() < 1) || (inscricaoDTO.getMedia() > 10)) {
+			throw new ServiceException(ServiceExceptionEnum.NOTA_INVALIDA);
+		}
+		if ((inscricaoDTO.getSituacao().length() < 1) || (inscricaoDTO.getSituacao().length() > 20)) {
+			throw new ServiceException(ServiceExceptionEnum.LIMITE_INVALIDO);
+		}
+		if ((inscricaoDTO.getAno() < 1900) || (inscricaoDTO.getAno() > 2020)) {
+			throw new ServiceException(ServiceExceptionEnum.DATA_INVALIDA);
 		}
 
 		Inscricao inscricao = new Inscricao(inscricaoDTO.getAvaliacao1(),

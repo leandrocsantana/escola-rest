@@ -37,13 +37,22 @@ public class TurmaService {
 
 	public void cadastrarTurma(TurmaDTO turmaDTO) throws ServiceException,
 			DaoException {
+		//inicio
 		if ((turmaDTO.getCodigo() < 1) || (turmaDTO.getCodigo() > 99)) {
 			throw new ServiceException(
 					ServiceExceptionEnum.CURSO_CODIGO_INVALIDO);
 		}
 		if ((turmaDTO.getAno() < 1900) || (turmaDTO.getAno() > 2020)) {
-			throw new ServiceException(ServiceExceptionEnum.CURSO_NOME_INVALIDO);
+			throw new ServiceException(ServiceExceptionEnum.DATA_INVALIDA);
 		}
+		if ((turmaDTO.getSemestre() < 1)) {
+			throw new ServiceException(ServiceExceptionEnum.CAMPO_INVALIDO);
+		}
+		if ((turmaDTO.getDisciplina() < 1)) {
+			throw new ServiceException(ServiceExceptionEnum.CAMPO_INVALIDO);
+		}
+		
+		//fim
 
 		Turma turma = new Turma(turmaDTO.getCodigo(), turmaDTO.getAno(),
 				turmaDTO.getSemestre(), dao.getDisciplina(turmaDTO
@@ -58,6 +67,7 @@ public class TurmaService {
 
 	public void alterarCurso(TurmaDTO turmaDTO) throws ServiceException,
 			DaoException {
+		//inicio
 		if ((turmaDTO.getCodigo() < 1) || (turmaDTO.getCodigo() > 99)) {
 			throw new ServiceException(
 					ServiceExceptionEnum.CURSO_CODIGO_INVALIDO);
@@ -65,6 +75,7 @@ public class TurmaService {
 		if ((turmaDTO.getAno() < 1900) || (turmaDTO.getAno() > 2020)) {
 			throw new ServiceException(ServiceExceptionEnum.CURSO_NOME_INVALIDO);
 		}
+		//fim
 
 		Turma turma = new Turma(turmaDTO.getCodigo(), turmaDTO.getAno(),
 				turmaDTO.getSemestre(), dao.getDisciplina(turmaDTO

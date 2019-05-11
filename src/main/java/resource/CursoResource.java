@@ -25,7 +25,7 @@ import exception.ServiceException.ServiceExceptionEnum;
 
 @Path("curso")
 @Consumes("application/xml")
-@Produces("application/xml")
+@Produces("application/json")
 public class CursoResource {
 
 	private CursoService cursoService;
@@ -62,7 +62,13 @@ public class CursoResource {
 				return Response.status(400).header("Motivo", e.getTipo())
 						.build();
 			if (e.getTipo() == ServiceExceptionEnum.CURSO_NOME_INVALIDO)
-				return Response.status(400).header("Motivo", "Nome inv�lido")
+				return Response.status(400).header("Motivo", ServiceExceptionEnum.CURSO_NOME_INVALIDO)
+						.build();
+			if (e.getTipo() == ServiceExceptionEnum.LIMITE_INVALIDO)
+				return Response.status(402).header("Motivo", ServiceExceptionEnum.LIMITE_INVALIDO)
+						.build();
+			if (e.getTipo() == ServiceExceptionEnum.LIMITE_INVALIDO)
+				return Response.status(402).header("Motivo", ServiceExceptionEnum.LIMITE_INVALIDO)
 						.build();
 			else
 				return Response.status(400).header("Motivo", e.getMessage())
